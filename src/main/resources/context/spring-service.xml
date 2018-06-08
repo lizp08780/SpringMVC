@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<!-- mq -->
+	<bean id="mqProducer" class="com.bwton.core.mq.RocketMQProducerFactoryBean">
+		<property name="producerGroup" value="${rocketmq.producerGroup}" />
+		<property name="namesrvAddr" value="${rocketmq.namesrvAddr}" />
+		<property name="vipChannelEnabled" value="${rocketmq.vipChannelEnabled}" />
+	</bean>
+
+	<!-- JSR303 Validator定义，HibernateValidator通过services方式注入 -->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+	<!--service 方法拦截器，拦截所有方法，便于输出日志、调用时间等 -->
+	<aop:config>
+		<aop:pointcut id="invokeMethodPointCut"
+			expression="execution(* com.bwton.*.service..impl.*.*(..))" />
+		<aop:aspect id="invokeMethodAspect" ref="handlerMethodAspect">
+			<aop:around method="aroundInvoke" pointcut-ref="invokeMethodPointCut" />
+		</aop:aspect>
+	</aop:config>
+
+	<bean id="handlerMethodAspect"
+		class="com.bwton.core.spring.web.servlet.mvc.method.annotation.HandlerMethodAspect" />
+</beans>
