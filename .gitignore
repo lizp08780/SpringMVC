@@ -32,4 +32,7 @@ build
 /*/logback
 .idea
 *target*
+.classpath
+.settings/
+.loadpath
 
