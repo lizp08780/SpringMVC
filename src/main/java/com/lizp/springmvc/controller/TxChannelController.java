@@ -24,6 +24,6 @@ public class TxChannelController {
 	@ApiOperation(value = "根据渠道交易流水号获取渠道流水", httpMethod = "GET", notes = "get txChannel by channelSerialNo", response = TxChannel.class)
 	public TxChannel getTxChannel(
 			@ApiParam(required = true, value = "渠道交易流水号", name = "channelSerialNo") @RequestParam(value = "channelSerialNo") String channelSerialNo) {
-		return txChannelService.selectById(channelSerialNo, "u-test-667");
+		return txChannelService.selectById(channelSerialNo, "34");
 	}
 }
