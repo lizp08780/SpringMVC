@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lizp.springmvc.persist2.TxChannelDao2">
+	<resultMap id="BaseResultMap" type="com.lizp.springmvc.domain.TxChannel">
+		<id column="channel_serial_no" jdbcType="VARCHAR" property="channelSerialNo" />
+		<result column="channel_tx_time" jdbcType="TIMESTAMP" property="channelTxTime" />
+		<result column="channel_trade_type" jdbcType="VARCHAR"
+			property="channelTradeType" />
+		<result column="tx_amount" jdbcType="INTEGER" property="txAmount" />
+		<result column="tx_status" jdbcType="CHAR" property="txStatus" />
+		<result column="org_channel_serial_no" jdbcType="VARCHAR"
+			property="orgChannelSerialNo" />
+		<result column="pay_serial_no" jdbcType="VARCHAR" property="paySerialNo" />
+		<result column="global_seq" jdbcType="VARCHAR" property="globalSeq" />
+		<result column="cust_id" jdbcType="VARCHAR" property="custId" />
+		<result column="bank_branch_id" jdbcType="VARCHAR" property="bankBranchId" />
+		<result column="channel_id" jdbcType="CHAR" property="channelId" />
+		<result column="channel_mer_id" jdbcType="VARCHAR" property="channelMerId" />
+		<result column="channel_group" jdbcType="VARCHAR" property="channelGroup" />
+		<result column="out_serial_no" jdbcType="VARCHAR" property="outSerialNo" />
+		<result column="out_tx_end_time" jdbcType="TIMESTAMP" property="outTxEndTime" />
+		<result column="out_settle_date" jdbcType="VARCHAR" property="outSettleDate" />
+		<result column="out_resp_code" jdbcType="VARCHAR" property="outRespCode" />
+		<result column="out_resp_desc" jdbcType="VARCHAR" property="outRespDesc" />
+		<result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+		<result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		channel_serial_no, channel_tx_time, channel_trade_type, tx_amount, tx_status,
+		org_channel_serial_no,
+		pay_serial_no, global_seq, cust_id, bank_branch_id, channel_id, channel_mer_id,
+		channel_group,
+		out_serial_no, out_tx_end_time, out_settle_date, out_resp_code, out_resp_desc,
+		gmt_create,
+		gmt_modified
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tx_channel
+		where channel_serial_no = #{channelSerialNo,jdbcType=VARCHAR}
+		and cust_id = #{custId,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectByPaySerialNo" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tx_channel
+		where pay_serial_no = #{paySerialNo,jdbcType=VARCHAR}
+		and cust_id = #{custId,jdbcType=VARCHAR}
+	</select>
+
+	<insert id="insertSelective" parameterType="com.lizp.springmvc.domain.TxChannel">
+		insert into tx_channel
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="channelSerialNo != null">
+				channel_serial_no,
+			</if>
+			<if test="channelTxTime != null">
+				channel_tx_time,
+			</if>
+			<if test="channelTradeType != null">
+				channel_trade_type,
+			</if>
+			<if test="txAmount != null">
+				tx_amount,
+			</if>
+			<if test="txStatus != null">
+				tx_status,
+			</if>
+			<if test="orgChannelSerialNo != null">
+				org_channel_serial_no,
+			</if>
+			<if test="paySerialNo != null">
+				pay_serial_no,
+			</if>
+			<if test="globalSeq != null">
+				global_seq,
+			</if>
+			<if test="custId != null">
+				cust_id,
+			</if>
+			<if test="bankBranchId != null">
+				bank_branch_id,
+			</if>
+			<if test="channelId != null">
+				channel_id,
+			</if>
+			<if test="channelMerId != null">
+				channel_mer_id,
+			</if>
+			<if test="channelGroup != null">
+				channel_group,
+			</if>
+			<if test="outSerialNo != null">
+				out_serial_no,
+			</if>
+			<if test="outTxEndTime != null">
+				out_tx_end_time,
+			</if>
+			<if test="outSettleDate != null">
+				out_settle_date,
+			</if>
+			<if test="outRespCode != null">
+				out_resp_code,
+			</if>
+			<if test="outRespDesc != null">
+				out_resp_desc,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="channelSerialNo != null">
+				#{channelSerialNo,jdbcType=VARCHAR},
+			</if>
+			<if test="channelTxTime != null">
+				#{channelTxTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="channelTradeType != null">
+				#{channelTradeType,jdbcType=VARCHAR},
+			</if>
+			<if test="txAmount != null">
+				#{txAmount,jdbcType=INTEGER},
+			</if>
+			<if test="txStatus != null">
+				#{txStatus,jdbcType=CHAR},
+			</if>
+			<if test="orgChannelSerialNo != null">
+				#{orgChannelSerialNo,jdbcType=VARCHAR},
+			</if>
+			<if test="paySerialNo != null">
+				#{paySerialNo,jdbcType=VARCHAR},
+			</if>
+			<if test="globalSeq != null">
+				#{globalSeq,jdbcType=VARCHAR},
+			</if>
+			<if test="custId != null">
+				#{custId,jdbcType=VARCHAR},
+			</if>
+			<if test="bankBranchId != null">
+				#{bankBranchId,jdbcType=VARCHAR},
+			</if>
+			<if test="channelId != null">
+				#{channelId,jdbcType=CHAR},
+			</if>
+			<if test="channelMerId != null">
+				#{channelMerId,jdbcType=VARCHAR},
+			</if>
+			<if test="channelGroup != null">
+				#{channelGroup,jdbcType=VARCHAR},
+			</if>
+			<if test="outSerialNo != null">
+				#{outSerialNo,jdbcType=VARCHAR},
+			</if>
+			<if test="outTxEndTime != null">
+				#{outTxEndTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="outSettleDate != null">
+				#{outSettleDate,jdbcType=VARCHAR},
+			</if>
+			<if test="outRespCode != null">
+				#{outRespCode,jdbcType=VARCHAR},
+			</if>
+			<if test="outRespDesc != null">
+				#{outRespDesc,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.lizp.springmvc.domain.TxChannel">
+		update tx_channel
+		<set>
+			<if test="txStatus != null">
+				tx_status = #{txStatus,jdbcType=CHAR},
+			</if>
+			<if test="outSerialNo != null">
+				out_serial_no = #{outSerialNo,jdbcType=VARCHAR},
+			</if>
+			<if test="outTxEndTime != null">
+				out_tx_end_time = #{outTxEndTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="outSettleDate != null">
+				out_settle_date = #{outSettleDate,jdbcType=VARCHAR},
+			</if>
+			<if test="outRespCode != null">
+				out_resp_code = #{outRespCode,jdbcType=VARCHAR},
+			</if>
+			<if test="outRespDesc != null">
+				out_resp_desc = #{outRespDesc,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where channel_serial_no = #{channelSerialNo,jdbcType=VARCHAR}
+		and cust_id = #{custId,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="selectNoPayAndProcessingByTime" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tx_channel
+		where channel_tx_time &gt;= #{startTime,jdbcType=VARCHAR}
+		and channel_tx_time &lt;= #{endTime,jdbcType=VARCHAR}
+		and tx_status in ('0', '3')
+		and channel_trade_type NOT IN ('ACCPAY', 'AGTPAY', 'WHPAY', 'UB')
+		LIMIT 500
+	</select>
+</mapper>

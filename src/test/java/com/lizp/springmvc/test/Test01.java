@@ -19,6 +19,8 @@ public class Test01 extends BaseJunit4Test {
 	private WebApplicationContext wac;
 	private MockMvc mockMvc;
 	@Autowired
+	private ITxChannelService txChannelService2;
+	@Autowired
 	private ITxChannelService txChannelService;
 
 	@Before
@@ -37,7 +39,8 @@ public class Test01 extends BaseJunit4Test {
 
 	@Test
 	public void test_selectById() {
-		txChannelService.selectById("12", "34");
+		System.err.println(txChannelService2.selectById("180625000000003002", "u-test-777"));
+		System.err.println(txChannelService.selectById("12", "34"));
 	}
 
 }

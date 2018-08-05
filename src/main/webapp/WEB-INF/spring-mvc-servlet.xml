@@ -79,5 +79,6 @@
 	<import resource="classpath*:context/spring-monitor.xml" />
 	<!-- <import resource="classpath*:context/spring-redis.xml" /> -->
 	<import resource="classpath*:context/spring-persist.xml" />
+	<import resource="classpath*:context/spring-persist2.xml" />
 	<!-- <import resource="classpath*:context/spring-service.xml" /> -->
 </beans>
