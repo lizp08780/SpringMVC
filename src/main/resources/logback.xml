@@ -58,8 +58,9 @@
 		</encoder>
 	</appender>
 
-	<!-- <logger name="org.springframework" level="INFO" additivity="false"> 
-		<appender-ref ref="FRAMEWORK_FILE" /> </logger> -->
+	<logger name="org.springframework" level="INFO" additivity="false">
+		<appender-ref ref="FRAMEWORK_FILE" />
+	</logger>
 
 	<!-- 打印SQL语句 -->
 	<Logger name="com.lizp.springmvc.persist" level="DEBUG"
@@ -70,11 +71,12 @@
 		additivity="false">
 		<appender-ref ref="MYBATIS_FILE" />
 	</Logger>
-	<Logger name="org.springframework" level="DEBUG" additivity="false">
+	<Logger name="org.springframework.jdbc.datasource" level="DEBUG"
+		additivity="false">
 		<appender-ref ref="MYBATIS_FILE" />
 	</Logger>
 
-	<root level="DEBUG">
+	<root level="INFO">
 		<appender-ref ref="DEFAULT_FILE" />
 	</root>
 </configuration>
