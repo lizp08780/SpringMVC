@@ -72,13 +72,13 @@
 			<tx:method name="del*" propagation="REQUIRED" />
 			<tx:method name="remove*" propagation="REQUIRED" />
 
-			<tx:method name="*" read-only="true" />
+			<!-- <tx:method name="*" read-only="true" /> -->
 		</tx:attributes>
 	</tx:advice>
 
 	<aop:config>
 		<aop:pointcut id="allServiceMethod2"
 			expression="execution(* com.lizp.springmvc.service..impl2.*.*(..))" />
-		<aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice2" />
+		<aop:advisor pointcut-ref="allServiceMethod2" advice-ref="txAdvice2" />
 	</aop:config>
 </beans>
