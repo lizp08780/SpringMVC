@@ -33,4 +33,13 @@ public class Person {
 	public void setCreate(Date create) {
 		this.create = create;
 	}
+
+	@Override
+	public String toString() {
+		return "Person{" +
+				"age=" + age +
+				", name='" + name + '\'' +
+				", create=" + create +
+				'}';
+	}
 }
