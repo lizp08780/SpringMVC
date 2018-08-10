@@ -17,7 +17,6 @@ public class TxChannelServiceImpl implements ITxChannelService {
 
 	@Override
 	public TxChannel selectById(String channelSerialNo, String custId) {
-		System.err.println("1");
 		return txChannelDao.selectByPrimaryKey(channelSerialNo, custId);
 	}
 
@@ -37,8 +36,7 @@ public class TxChannelServiceImpl implements ITxChannelService {
 		if (txChannel == null) {
 			return 0;
 		}
-		int count = txChannelDao.insertSelective(txChannel);
-		return count;
+		return txChannelDao.insertSelective(txChannel);
 	}
 
 	@Override
