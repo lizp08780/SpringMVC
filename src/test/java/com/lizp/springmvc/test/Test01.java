@@ -1,4 +1,5 @@
-﻿package com.lizp.springmvc.test;
+package com.lizp.springmvc.test;
+
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +15,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.lizp.springmvc.BaseJunit4Test;
 import com.lizp.springmvc.service.ITxChannelService;
 
+//测试
 public class Test01 extends BaseJunit4Test {
 	@Autowired
 	private WebApplicationContext wac;
@@ -42,5 +44,4 @@ public class Test01 extends BaseJunit4Test {
 		System.err.println(txChannelService2.selectById("180625000000003002", "u-test-777"));
 		System.err.println(txChannelService.selectById("12", "34"));
 	}
-
 }

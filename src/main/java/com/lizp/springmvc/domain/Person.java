@@ -1,4 +1,4 @@
-﻿package com.lizp.springmvc.domain;
+package com.lizp.springmvc.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.Date;
 
-
+//测试
 public class Person {
     private int age;
     private String name;
