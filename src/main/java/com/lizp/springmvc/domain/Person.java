@@ -1,7 +1,8 @@
 ﻿package com.lizp.springmvc.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.google.common.base.Objects;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.Date;
 
@@ -39,10 +40,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "age=" + age +
-                ", name='" + name + '\'' +
-                ", create=" + create +
-                '}';
+        return ReflectionToStringBuilder.toString(this, ToStringStyle.JSON_STYLE);
     }
 }
