@@ -1,4 +1,4 @@
-package com.lizp.springmvc.test;
+﻿package com.lizp.springmvc.test;
 
 import org.junit.Before;
 import org.junit.Test;
