@@ -75,7 +75,7 @@
 			<tx:method name="del*" propagation="REQUIRED" />
 			<tx:method name="remove*" propagation="REQUIRED" />
 
-			<!-- <tx:method name="*" read-only="true" /> -->
+			<tx:method name="*" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
 

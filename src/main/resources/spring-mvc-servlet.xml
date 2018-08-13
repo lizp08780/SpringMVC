@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd 
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context.xsd 
+      http://www.springframework.org/schema/mvc
+      http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="com.lizp.springmvc.controller"/>
+    <mvc:default-servlet-handler/>
+
+    <!-- 配置freeMarker的模板路径 -->
+    <bean
+            class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/views/ftl/"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+    <!--配置freemarker视图解析器 -->
+    <bean
+            class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="suffix" value=".ftl"/>
+        <property name="contentType" value="text/html; charset=UTF-8"/>
+        <!-- 此变量值为pageContext.request, 页面使用方法：rc.contextPath -->
+        <property name="requestContextAttribute" value="rc"/>
+    </bean>
+
+    <!--ViewResolver 视图解析器 -->
+    <!--用于支持Servlet、JSP视图解析 -->
+    <bean id="jspViewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/views/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean id="exceptionResolver"
+          class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="error/500"/>
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.apache.shiro.authz.UnauthorizedException">error/403</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <!-- 对所有请求都拦截，公共拦截器可以有多个 -->
+        <bean name="baseInterceptor" class="com.lizp.springmvc.config.BaseInterceptor"/>
+        <mvc:interceptor>
+            <!-- 对/hello进行拦截 -->
+            <mvc:mapping path="/hello"/>
+            <!-- 特定请求的拦截器只能有一个 -->
+            <bean class="com.lizp.springmvc.config.TestInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!-- 将 springSwaggerConfig加载到spring容器 -->
+    <bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig"/>
+    <!-- 将自定义的swagger配置类加载到spring容器 -->
+    <bean class="com.lizp.springmvc.config.SwaggerConfig"/>
+</beans>
