@@ -7,6 +7,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class) // 使用junit4进行测试
 @WebAppConfiguration(value = "src/main/webapp")
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring-mvc-servlet.xml")
+@ContextConfiguration({"classpath*:context/spring-mvc-servlet.xml", "classpath*:spring.xml"})
 public class BaseJunit4Test {
 }

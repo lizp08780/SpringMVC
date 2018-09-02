@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<property name="log_dir" value="/opt/logs/tomcat" />
-	<appender name="DEFAULT_FILE"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>${log_dir}/application.log</File>
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>${log_dir}/application.%d{yyyy-MM-dd}.%i.log.zip
-			</FileNamePattern>
-			<MaxHistory>10</MaxHistory>
-			<TimeBasedFileNamingAndTriggeringPolicy
-				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-				<MaxFileSize>100MB</MaxFileSize>
-			</TimeBasedFileNamingAndTriggeringPolicy>
-		</rollingPolicy>
-		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} -
-				%msg%n
-			</pattern>
-		</encoder>
-	</appender>
+    <property name="log_dir" value="/opt/logs/tomcat"/>
+    <appender name="DEFAULT_FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${log_dir}/application.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log_dir}/application.%d{yyyy-MM-dd}.%i.log.zip
+            </FileNamePattern>
+            <MaxHistory>10</MaxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>100MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} -
+                %msg%n
+            </pattern>
+        </encoder>
+    </appender>
 
-	<appender name="FRAMEWORK_FILE"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>${log_dir}/framework.log</File>
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>${log_dir}/framework.%d{yyyy-MM-dd}.%i.log.zip
-			</FileNamePattern>
-			<MaxHistory>10</MaxHistory>
-			<TimeBasedFileNamingAndTriggeringPolicy
-				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-				<MaxFileSize>100MB</MaxFileSize>
-			</TimeBasedFileNamingAndTriggeringPolicy>
-		</rollingPolicy>
-		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} -
-				%msg%n
-			</pattern>
-		</encoder>
-	</appender>
+    <appender name="FRAMEWORK_FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${log_dir}/framework.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log_dir}/framework.%d{yyyy-MM-dd}.%i.log.zip
+            </FileNamePattern>
+            <MaxHistory>10</MaxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>100MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} -
+                %msg%n
+            </pattern>
+        </encoder>
+    </appender>
 
-	<appender name="MYBATIS_FILE"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>${log_dir}/mybatis.log</File>
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>${log_dir}/mybatis.%d{yyyy-MM-dd}.%i.log.zip
-			</FileNamePattern>
-			<MaxHistory>10</MaxHistory>
-			<TimeBasedFileNamingAndTriggeringPolicy
-				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-				<MaxFileSize>100MB</MaxFileSize>
-			</TimeBasedFileNamingAndTriggeringPolicy>
-		</rollingPolicy>
-		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} -
-				%msg%n
-			</pattern>
-		</encoder>
-	</appender>
+    <appender name="MYBATIS_FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${log_dir}/mybatis.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log_dir}/mybatis.%d{yyyy-MM-dd}.%i.log.zip
+            </FileNamePattern>
+            <MaxHistory>10</MaxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>100MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} -
+                %msg%n
+            </pattern>
+        </encoder>
+    </appender>
 
-	<logger name="org.springframework" level="INFO" additivity="false">
-		<appender-ref ref="FRAMEWORK_FILE" />
-	</logger>
+    <logger name="org.springframework" level="INFO" additivity="false">
+        <appender-ref ref="FRAMEWORK_FILE"/>
+    </logger>
 
-	<!-- 打印SQL语句 -->
-	<Logger name="com.lizp.springmvc.persist" level="DEBUG"
-		additivity="false">
-		<appender-ref ref="MYBATIS_FILE" />
-	</Logger>
-	<Logger name="com.lizp.springmvc.persist2" level="DEBUG"
-		additivity="false">
-		<appender-ref ref="MYBATIS_FILE" />
-	</Logger>
-	<Logger name="org.springframework.jdbc.datasource" level="DEBUG"
-		additivity="false">
-		<appender-ref ref="MYBATIS_FILE" />
-	</Logger>
+    <!-- 打印SQL语句 -->
+    <Logger name="com.lizp.springmvc.persist" level="DEBUG"
+            additivity="false">
+        <appender-ref ref="MYBATIS_FILE"/>
+    </Logger>
+    <Logger name="com.lizp.springmvc.persist2" level="DEBUG"
+            additivity="false">
+        <appender-ref ref="MYBATIS_FILE"/>
+    </Logger>
+    <Logger name="org.springframework.jdbc.datasource" level="DEBUG"
+            additivity="false">
+        <appender-ref ref="MYBATIS_FILE"/>
+    </Logger>
 
-	<root level="INFO">
-		<appender-ref ref="DEFAULT_FILE" />
-	</root>
+    <root level="INFO">
+        <appender-ref ref="DEFAULT_FILE"/>
+    </root>
 </configuration>

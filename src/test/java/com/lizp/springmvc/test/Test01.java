@@ -17,31 +17,31 @@ import com.lizp.springmvc.service.ITxChannelService;
 
 //测试
 public class Test01 extends BaseJunit4Test {
-	@Autowired
-	private WebApplicationContext wac;
-	private MockMvc mockMvc;
-	@Autowired
-	private ITxChannelService txChannelService2;
-	@Autowired
-	private ITxChannelService txChannelService;
+    @Autowired
+    private WebApplicationContext wac;
+    private MockMvc mockMvc;
+    @Autowired
+    private ITxChannelService txChannelService2;
+    @Autowired
+    private ITxChannelService txChannelService;
 
-	@Before
-	public void setUp() {
-		mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
-	}
+    @Before
+    public void setUp() {
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+    }
 
-	@Test
-	public void index() throws Exception {
-		this.mockMvc
-				.perform(MockMvcRequestBuilders.get("/txChannel/getTxChannel")
-						.contentType(MediaType.APPLICATION_JSON_UTF8).param("channelSerialNo", "12"))
-				.andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn()
-				.getResponse().getContentAsString();
-	}
+    @Test
+    public void index() throws Exception {
+        this.mockMvc
+                .perform(MockMvcRequestBuilders.get("/txChannel/getTxChannel")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8).param("channelSerialNo", "12"))
+                .andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn()
+                .getResponse().getContentAsString();
+    }
 
-	@Test
-	public void test_selectById() {
-		System.err.println(txChannelService2.selectById("180625000000003002", "u-test-777"));
-		System.err.println(txChannelService.selectById("12", "34"));
-	}
+    @Test
+    public void test_selectById() {
+        System.err.println(txChannelService2.selectById("180625000000003002", "u-test-777"));
+        System.err.println(txChannelService.selectById("12", "34"));
+    }
 }
